@@ -74,9 +74,11 @@ export class DialogComponent implements OnInit {
 
   updateVotingTypes() {
     if (this.votingTypesForm.valid) {
-      this.apiService.putVotingTypes(this.votingTypesForm.value, this.data.id)
+      this.apiService.putVotingTypes(this.votingTypesForm.value, this.data._id)
         .subscribe({
           next: res => {
+            console.log("UPDATING SERVICE :: ", res);
+
             alert('Voting Type updated successfully');
             this.votingTypesForm.reset();
             this.dialogRef.close('update');
