@@ -14,7 +14,7 @@ import { DialogComponent } from 'src/app/component/dialog/dialog.component';
 })
 export class ManagerComponent implements OnInit {
   showFiller = false;
-  displayedColumns: string[] = ['name', 'priority', 'parameter', 'content'];
+  displayedColumns: string[] = ['name', 'priority', 'parameter', 'content', 'actions'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
