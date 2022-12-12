@@ -44,7 +44,7 @@ export class DialogComponent implements OnInit {
   addVotingType() {
     if (!this.data) {
       if (this.votingTypesForm.valid) {
-        this.apiService.insertProduct(this.votingTypesForm.value)
+        this.apiService.insertVotingTypes(this.votingTypesForm.value)
           .subscribe({
             next: res => {
               this.votingTypesForm.reset();
@@ -61,7 +61,7 @@ export class DialogComponent implements OnInit {
   }
 
   getVotingTypes() {
-    this.apiService.getProducts()
+    this.apiService.getVotingTypes()
       .subscribe({
         next: (res: any) => {
           console.log(res);
@@ -74,7 +74,7 @@ export class DialogComponent implements OnInit {
 
   updateVotingTypes() {
     if (this.votingTypesForm.valid) {
-      this.apiService.putProduct(this.votingTypesForm.value, this.data.id)
+      this.apiService.putVotingTypes(this.votingTypesForm.value, this.data.id)
         .subscribe({
           next: res => {
             alert('Product updated successfully');

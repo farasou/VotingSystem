@@ -58,7 +58,7 @@ export class ManagerComponent implements OnInit {
   }
 
   deleteVotingType(id: number) {
-    this.apiService.deleteProduct(id)
+    this.apiService.deleteVotingTypes(id)
       .subscribe({
         next: (result: any) => {
           this.getVotingType();
@@ -67,7 +67,7 @@ export class ManagerComponent implements OnInit {
   }
 
   getVotingType() {
-    this.apiService.getProducts()
+    this.apiService.getVotingTypes()
       .subscribe({
         next: (products: any[] | undefined) => {
           this.dataSource = new MatTableDataSource(products);
