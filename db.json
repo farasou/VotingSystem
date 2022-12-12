@@ -1,0 +1,23 @@
+{
+  "products": [
+    {
+      "name": "Apple",
+      "category": "fruits",
+      "price": 200,
+      "freshness": "Fresh",
+      "comment": "One apple a day, keep the doctor away",
+      "date": "2022-08-23T23:00:00.000Z",
+      "id": 1
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
