@@ -14,14 +14,14 @@ export class ApiService {
     private http: HttpClient
   ) { }
 
-  insertVotingTypes(product: any) {
-    return this.http.post(this.API_URL + 'votingTypes', product);
+  insertVotingTypes(votingType: any) {
+    return this.http.post(this.API_URL + 'votingTypes', votingType);
   }
   getVotingTypes(): any {
-    return this.http.get('http://localhost:3000/votingTypes');
+    return this.http.get(this.API_URL + 'votingTypes');
   }
-  putVotingTypes(product: any, id: number) {
-    return this.http.put(this.API_URL + `votingTypes/${id}`, product);
+  putVotingTypes(votingType: any, id: number) {
+    return this.http.put(this.API_URL + `votingTypes/${id}`, votingType);
   }
   deleteVotingTypes(id: number) {
     return this.http.delete(this.API_URL + `votingTypes/${id}`);

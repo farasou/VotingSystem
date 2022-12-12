@@ -69,8 +69,8 @@ export class ManagerComponent implements OnInit {
   getVotingType() {
     this.apiService.getVotingTypes()
       .subscribe({
-        next: (products: any[] | undefined) => {
-          this.dataSource = new MatTableDataSource(products);
+        next: (votingTypes: any[] | undefined) => {
+          this.dataSource = new MatTableDataSource(votingTypes);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
         }

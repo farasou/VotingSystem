@@ -77,7 +77,7 @@ export class DialogComponent implements OnInit {
       this.apiService.putVotingTypes(this.votingTypesForm.value, this.data.id)
         .subscribe({
           next: res => {
-            alert('Product updated successfully');
+            alert('Voting Type updated successfully');
             this.votingTypesForm.reset();
             this.dialogRef.close('update');
           }
