@@ -10,12 +10,9 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class DialogComponent implements OnInit {
 
-  // freshness
-  freshnessLevels = ["Fresh", "Medium", "Old"];
-
-  // products form using form builder
-  productsForm !: FormGroup;
+  votingTypesForm !: FormGroup;
   actionButtonLabel: string = "save";
+
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
@@ -28,69 +25,60 @@ export class DialogComponent implements OnInit {
   }
 
   initForm() {
-    this.productsForm = this.fb.group({
+    this.votingTypesForm = this.fb.group({
       name: ['', Validators.required],
-      category: ['', Validators.required],
-      price: ['', Validators.required],
-      freshness: ['', Validators.required],
-      comment: ['', Validators.required],
-      date: ['', Validators.required],
+      priority: ['', Validators.required],
+      parameter: [[''], Validators.required],
+      content: ['', Validators.required]
     });
 
     if (this.data) {
-      // if there are data passed, means the EDIT button is clicked, not the ADD button
       this.actionButtonLabel = "update";
-      this.productsForm.controls['name'].setValue(this.data.name);
-      this.productsForm.controls['category'].setValue(this.data.category);
-      this.productsForm.controls['price'].setValue(this.data.price);
-      this.productsForm.controls['freshness'].setValue(this.data.freshness);
-      this.productsForm.controls['comment'].setValue(this.data.comment);
-      this.productsForm.controls['date'].setValue(this.data.date);
+      this.votingTypesForm.controls['name'].setValue(this.data.name);
+      this.votingTypesForm.controls['priority'].setValue(this.data.priority);
+      this.votingTypesForm.controls['parameter'].setValue(this.data.parameter);
+      this.votingTypesForm.controls['content'].setValue(this.data.content);
     }
   }
 
-  addProduct() {
+  addVotingType() {
     if (!this.data) {
-      // if there are no data passed, means the ADD button is clicked, not the EDIT button
-      if (this.productsForm.valid) {
-        this.apiService.insertProduct(this.productsForm.value)
+      if (this.votingTypesForm.valid) {
+        this.apiService.insertProduct(this.votingTypesForm.value)
           .subscribe({
             next: res => {
-              console.log("RESULT MOTHERFUCKER", res);
-              this.productsForm.reset();
+              this.votingTypesForm.reset();
               this.dialogRef.close('save');
-
             },
             error: err => {
-              console.log("ERROR MOTHERFUCKER", err);
+              console.error(err);
             }
           });
       }
     } else {
-      this.updateProduct();
+      this.updateVotingTypes();
     }
   }
 
-  getProducts() {
+  getVotingTypes() {
     this.apiService.getProducts()
       .subscribe({
         next: (res: any) => {
-          console.log("RESULT MOTHERFUCKER", res);
+          console.log(res);
         },
         error: (err: any) => {
-          console.log("ERROR MOTHERFUCKER", err);
+          console.error(err);
         }
       });
   }
 
-  updateProduct() {
-    if (this.productsForm.valid) {
-      this.apiService.putProduct(this.productsForm.value, this.data.id)
+  updateVotingTypes() {
+    if (this.votingTypesForm.valid) {
+      this.apiService.putProduct(this.votingTypesForm.value, this.data.id)
         .subscribe({
           next: res => {
-            console.log("RESULT MOTHERFUCKER", res);
             alert('Product updated successfully');
-            this.productsForm.reset();
+            this.votingTypesForm.reset();
             this.dialogRef.close('update');
           }
         });

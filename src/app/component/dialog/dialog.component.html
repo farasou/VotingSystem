@@ -3,53 +3,23 @@
 <main mat-dialog-content>
 
     <!-- REACTIVE FORM -->
-    <form [formGroup]="productsForm">
+    <form [formGroup]="votingTypesForm">
         <!-- NAME -->
         <mat-form-field appearance="outline">
-            <mat-label>Product Name</mat-label>
+            <mat-label>Type Name</mat-label>
             <input matInput placeholder="Name" formControlName="name">
         </mat-form-field>
 
-        <!-- CATEGORY -->
+        <!-- PRIORITY -->
         <mat-form-field appearance="outline">
-            <mat-label>Product Category</mat-label>
-            <mat-select placeholder="Category" value="vegtables" formControlName="category">
-                <mat-option value="vegtables">Vegetables</mat-option>
-                <mat-option value="fruits">Fruits</mat-option>
-                <mat-option value="meat">Meat</mat-option>
-                <mat-option value="dairy">Dairy</mat-option>
-                <mat-option value="bakery">Bakery</mat-option>
-                <mat-option value="snacks">Snacks</mat-option>
-            </mat-select>
+            <mat-label>Type Priority</mat-label>
+            <input matInput placeholder="riority" type="number" formControlName="Priority">
         </mat-form-field>
 
-        <!-- DATE -->
-        <mat-form-field appearance="fill">
-            <mat-label>Choose a date</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="date">
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-
-        <!-- Freshness -->
-        <label id="example-radio-group-label">Pick your favorite season</label>
-        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="freshness">
-            <mat-radio-button class="example-radio-button" *ngFor="let f of freshnessLevels" [value]="f">
-                {{f}}
-            </mat-radio-button>
-        </mat-radio-group>
-
-        <!-- PRICE -->
+        <!-- CONTENT -->
         <mat-form-field appearance="outline">
-            <mat-label>Product Price</mat-label>
-            <input matInput placeholder="Price" type="number" formControlName="price">
-        </mat-form-field>
-
-        <!-- COMMENT -->
-        <mat-form-field appearance="outline">
-            <mat-label>Comment</mat-label>
-            <textarea matInput placeholder="Your comment here" rows="5" formControlName="comment">
+            <mat-label>Content</mat-label>
+            <textarea matInput placeholder="Tye description here" rows="5" formControlName="content">
         </textarea>
         </mat-form-field>
     </form>
@@ -58,5 +28,5 @@
 
 <div mat-dialog-actions [align]="'end'">
     <button mat-raised-button mat-dialog-close>Close</button>
-    <button mat-raised-button (click)="addProduct()">{{actionButtonLabel}}</button>
+    <button mat-raised-button (click)="addVotingType()">{{actionButtonLabel}}</button>
 </div>

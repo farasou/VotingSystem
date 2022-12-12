@@ -1,25 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor(private http: HttpClient) { }
+  refreshData = new BehaviorSubject(false);
+  API_URL = "http://localhost:3000/";
 
-  // BASIC CRUD OPERATIONS
+  constructor(
+    private http: HttpClient
+  ) { }
 
   insertProduct(product: any) {
-    return this.http.post('http://localhost:3000/products', product);
+    return this.http.post(this.API_URL + 'votingTypes', product);
   }
   getProducts(): any {
-    return this.http.get('http://localhost:3000/products');
+    return this.http.get(this.API_URL + 'votingTypes');
   }
   putProduct(product: any, id: number) {
-    return this.http.put(`http://localhost:3000/products/${id}`, product);
+    return this.http.put(this.API_URL + `votingTypes/${id}`, product);
   }
   deleteProduct(id: number) {
-    return this.http.delete(`http://localhost:3000/products/${id}`);
+    return this.http.delete(this.API_URL + `votingTypes/${id}`);
   }
 }

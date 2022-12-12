@@ -22,11 +22,19 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { HomeComponent } from './views/home/home.component';
+import { TypesComponent } from './views/types/types.component';
+import { ManagerComponent } from './views/manager/manager.component';
+import { NotfoundComponent } from './views/notfound/notfound.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DialogComponent
+    DialogComponent,
+    HomeComponent,
+    TypesComponent,
+    ManagerComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
